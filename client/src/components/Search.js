@@ -1,26 +1,30 @@
 import React from 'react';
-import SideBar from './SideBar';
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: '',
-    }
-  }
+//convert to stateless component
+//fix sample data pathway to prop
 
-  render() {
-    return (
+let Search = () => {
+  return (
       <div>
-        <input
-          className="form-control"
-          type="text"
-          value={this.state.value}
-          onChange={this.handleInputChange.bind(this)}
-        />
+        <form>
+          <label>Nutrient</label>
+          <input type="text" list="nutrients" />
+          <datalist id="nutrients">
+            {this.nutrients.map((nutrient, key) => {
+              return <option key={key} value={nutrient}/>
+            })}
+          </datalist>
+          <select id="operation">
+            <option value="less than">Less Than</option>
+            <option value="equal To">Equal To</option>
+            <option value="greater than">Greater Than</option>
+          </select>
+          <label>Weight: </label>
+          <input type="number" id="weight" min="0"/>
+          <input type="submit"/>
+        </form>
       </div>
-    )
-  }
+  )
 }
 
 export default Search;
