@@ -16,6 +16,8 @@ class App extends React.Component {
     }
     this.handleNavSelect = this.handleNavSelect.bind(this);
     this.addQuery = this.addQuery.bind(this);
+    this.clearQueries = this.clearQueries.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleNavSelect(e) {
@@ -45,7 +47,21 @@ class App extends React.Component {
     })
   }
 
-  
+  clearQueries() {
+    this.setState({
+      queries: []
+    })
+  }
+
+  handleSearch() {
+    //add all the query info into the request
+    fetch('/foods')
+      .then((response) => response.json())
+      .then((data) => {
+        //parse the data then set state with it.
+        // this.setState()
+      })
+  }
 
   renderSelection() {
     if (this.state.sectionSelected === 'DashBoard') {
@@ -53,7 +69,7 @@ class App extends React.Component {
     } else if (this.state.sectionSelected === 'Analytics') {
       return <div className="construction">Nothing here YET</div>
     } else if (this.state.sectionSelected === 'Search Foods') {
-      return <Search nutrients={this.fakeNutrientData} queries={this.state.queries} addQuery={this.addQuery}/>
+      return <Search nutrients={this.fakeNutrientData} queries={this.state.queries} addQuery={this.addQuery} clearQueries={this.clearQueries} handleSearch={this.handleSearch}/>
     } else if (this.state.sectionSelected === 'Shipments') {
       return <div className="construction">Nothing here YET</div>
     } else if (this.state.sectionSelected === 'Membership') {

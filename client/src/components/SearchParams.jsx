@@ -3,7 +3,7 @@ import React from 'react';
 //add option for more complex queries such as a range
 //clean up UI to make it more pleasant
 
-let SearchParams = ({ queries }) => {
+let SearchParams = ({ queries, clearQueries }) => {
   return (
       <div>
         <table>
@@ -24,7 +24,7 @@ let SearchParams = ({ queries }) => {
             ))}
           </tbody>
         </table>
-        <button>Clear All Params</button>
+        <button onClick={clearQueries}>Clear All Params</button>
       </div>
   )
 }

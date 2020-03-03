@@ -4,7 +4,7 @@ import SearchParams from './SearchParams';
 //add option for more complex queries such as a range
 //clean up UI to make it more pleasant
 
-let Search = ({ nutrients, queries, addQuery }) => {
+let Search = ({ nutrients, queries, addQuery, clearQueries, handleSearch }) => {
   return (
       <div>
         <form onSubmit={addQuery}>
@@ -24,7 +24,8 @@ let Search = ({ nutrients, queries, addQuery }) => {
           <input type="number" id="weight" min="0" name="weight"/>
           <input type="submit" value="Add Search Parameter"/>
         </form>
-        <SearchParams queries={queries}></SearchParams>
+        <button onClick={handleSearch}>QUERY</button>
+        <SearchParams queries={queries} clearQueries={clearQueries}></SearchParams>
       </div>
   )
 }
