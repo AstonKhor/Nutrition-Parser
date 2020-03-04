@@ -1,7 +1,9 @@
 import React from 'react';
-import SideBar from './SideBar';
-import Search from './Search';
-import data from '../../../database/food_data.json';
+import SideBar from './SideBar/SideBar';
+import Search from './Search/Search';
+import Header from './Header/Header';
+import FutureComponentTemplate from './FutureComponentTemplate/FutureComponentTemplate';
+import Style from '../styled-components/Wrapper';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class App extends React.Component {
     this.fakeNutrientData = ['nut1', 'nut2', 'sugar'];
     this.state = {
       username: 'Guest',
-      queries: [{nutrient: 'one', operation: 'greater', weight: 'weight'}],
+      queries: [],
       currentFoods: [],
       sectionSelected: 'Search Foods',
     }
@@ -18,6 +20,16 @@ class App extends React.Component {
     this.addQuery = this.addQuery.bind(this);
     this.clearQueries = this.clearQueries.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  componentDidMount() {
+    //make request to server for list of nutrients or have them locally available
+    fetch('/foods')
+      .then((response) => response.json)
+      .then((data) => {
+        console.log(data);
+        
+      })
   }
 
   handleNavSelect(e) {
@@ -65,19 +77,19 @@ class App extends React.Component {
 
   renderSelection() {
     if (this.state.sectionSelected === 'DashBoard') {
-      return <div className="construction">Nothing here YET</div>
+      return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Analytics') {
-      return <div className="construction">Nothing here YET</div>
+      return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Search Foods') {
       return <Search nutrients={this.fakeNutrientData} queries={this.state.queries} addQuery={this.addQuery} clearQueries={this.clearQueries} handleSearch={this.handleSearch}/>
     } else if (this.state.sectionSelected === 'Shipments') {
-      return <div className="construction">Nothing here YET</div>
+      return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Membership') {
-      return <div className="construction">Nothing here YET</div>
+      return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Settings') {
-      return <div className="construction">Nothing here YET</div>
+      return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Help') {
-      return <div className="construction">Nothing here YET</div>
+      return <FutureComponentTemplate/>
     }
   }
 
@@ -85,11 +97,12 @@ class App extends React.Component {
     return (
       <div>
         <SideBar sections={this.sections} selected={this.state.sectionSelected} select={this.handleNavSelect}/>
-        <div>
-          Main Section
+        <Header/>
+        {/* <Style.Backlay/> */}
+        <Style.Content>
           {/* {<top bar>} */}
           {this.renderSelection()}
-        </div>
+        </Style.Content>
       </div>
     )
   }

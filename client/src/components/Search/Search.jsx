@@ -1,12 +1,14 @@
 import React from 'react';
 import SearchParams from './SearchParams';
+import Style from '../../styled-components/Wrapper';
 
 //add option for more complex queries such as a range
 //clean up UI to make it more pleasant
 
 let Search = ({ nutrients, queries, addQuery, clearQueries, handleSearch }) => {
   return (
-      <div>
+      <Style.Search>
+        Personalize Your Diet
         <form onSubmit={addQuery}>
           <label>Nutrient</label>
           <input type="text" list="nutrients" name="nutrient"/>
@@ -26,7 +28,7 @@ let Search = ({ nutrients, queries, addQuery, clearQueries, handleSearch }) => {
         </form>
         <button onClick={handleSearch}>QUERY</button>
         <SearchParams queries={queries} clearQueries={clearQueries}></SearchParams>
-      </div>
+      </Style.Search>
   )
 }
 
