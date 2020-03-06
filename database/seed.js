@@ -20,8 +20,8 @@ let parseData = (data) => {
         let queryStr = `INSERT INTO Nutrients (id, nutrient_name, unit, nutrient_value, gm, food_id) VALUES `
         for (let j = 0; j < foods[i].nutrients.length; j++) {
           let nutrient = foods[i].nutrients[j];
-          nutrient.value = nutrient.value === '--' ? null : nutrient.value;
-          nutrient.gm = nutrient.gm === '--' ? null : nutrient.gm;
+          nutrient.value = nutrient.value === '--' ? 0 : nutrient.value;
+          nutrient.gm = nutrient.gm === '--' ? 0 : nutrient.gm;
           queryStr = queryStr.concat(`(${nutrient.nutrient_id}, "${nutrient.nutrient}", "${nutrient.unit}", ${nutrient.value}, ${nutrient.gm}, ${i}),`)
         }
 

@@ -42,6 +42,7 @@ class App extends React.Component {
 
   addQuery(e) {
     e.preventDefault();
+    console.log(e.currentTarget.elements);
     let newQuery = {
       nutrient: e.currentTarget.elements["nutrient"].value,
       operation: e.currentTarget.elements["operation"].value,
@@ -72,14 +73,16 @@ class App extends React.Component {
     let urlQuery = '?'
     let queries = this.state.queries;
     for (let i = 0; i < queries.length; i++) {
-      urlQuery = urlQuery.concat(`query${i + 1}=${queries[i].nutrient},${queries[i].operation},${queries[i].weight}&`);
+      urlQuery = urlQuery.concat(`query${i + 1}=${queries[i].nutrient};${queries[i].operation};${queries[i].weight}&`);
     }
-    fetch(`/foods/search${urlQuery}`)
+    fetch(`/foods/search${urlQuery.slice(0, urlQuery.length - 1)}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         //parse the data then set state with it.
-        // this.setState()
+        this.setState({
+          currentFoods: data,
+        })
       })
   }
 
