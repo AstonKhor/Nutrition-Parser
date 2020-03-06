@@ -10,10 +10,9 @@ let Search = ({ nutrients, queries, addQuery, clearQueries, handleSearch }) => {
       <Style.Search>
         Personalize Your Diet
         
-        <input type="text" list="nutrients" name="nutrient"/>
-        
         
         <form id="Search" onSubmit={addQuery}>
+        <input type="text" list="nutrients" name="nutrient"/>
           <label>Nutrient</label>
           <datalist id="nutrients">
             {nutrients.map((nutrient, key) => {
