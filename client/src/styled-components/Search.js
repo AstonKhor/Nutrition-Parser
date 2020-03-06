@@ -18,12 +18,14 @@ color: black;
 `;
 
 const SearchBox = styled.div`
-
+  
 `;
 
 const QueriesBox = styled.div`
+
 `;
 const SearchResults = styled.div`
+
 `;
 
 export { Search };

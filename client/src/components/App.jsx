@@ -9,8 +9,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.sections = ['DashBoard', 'Analytics', 'Search Foods', 'Shipments', 'Membership', 'Settings', 'Help'];
-    this.fakeNutrientData = ['nut1', 'nut2', 'sugar'];
     this.state = {
+      nutrientData: [],
       username: 'Guest',
       queries: [],
       currentFoods: [],
@@ -24,11 +24,13 @@ class App extends React.Component {
 
   componentDidMount() {
     //make request to server for list of nutrients or have them locally available
-    fetch('/foods')
-      .then((response) => response.json)
+    fetch('/nutrients')
+      .then((response) => {
+        return response.json()})
       .then((data) => {
-        console.log(data);
-        
+        this.setState({
+          nutrientData: data
+        });
       })
   }
 
@@ -67,9 +69,15 @@ class App extends React.Component {
 
   handleSearch() {
     //add all the query info into the request
-    fetch('/foods')
+    let urlQuery = '?'
+    let queries = this.state.queries;
+    for (let i = 0; i < queries.length; i++) {
+      urlQuery = urlQuery.concat(`query${i + 1}=${queries[i].nutrient},${queries[i].operation},${queries[i].weight}&`);
+    }
+    fetch(`/foods/search${urlQuery}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         //parse the data then set state with it.
         // this.setState()
       })
@@ -81,7 +89,7 @@ class App extends React.Component {
     } else if (this.state.sectionSelected === 'Analytics') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Search Foods') {
-      return <Search nutrients={this.fakeNutrientData} queries={this.state.queries} addQuery={this.addQuery} clearQueries={this.clearQueries} handleSearch={this.handleSearch}/>
+      return <Search nutrients={this.state.nutrientData} queries={this.state.queries} addQuery={this.addQuery} clearQueries={this.clearQueries} handleSearch={this.handleSearch}/>
     } else if (this.state.sectionSelected === 'Shipments') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Membership') {
