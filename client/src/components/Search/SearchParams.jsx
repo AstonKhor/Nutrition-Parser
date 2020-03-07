@@ -1,8 +1,5 @@
 import React from 'react';
 
-//add option for more complex queries such as a range
-//clean up UI to make it more pleasant
-
 let SearchParams = ({ queries, clearQueries }) => {
   return (
       <div>

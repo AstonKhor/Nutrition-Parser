@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 const Content = styled.div`
   margin-top: 80px;
-  margin-left: 280px;
-  height: 100%;
-  width: 100%;
+  margin-left: 265px;
   z-index: -100;
   background: none;
   color: black;

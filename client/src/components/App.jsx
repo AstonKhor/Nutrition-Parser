@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //make request to server for list of nutrients or have them locally available
+    //make request to server for list of nutrients and have them locally available
     fetch('/nutrients')
       .then((response) => {
         return response.json()})
@@ -42,12 +42,14 @@ class App extends React.Component {
 
   addQuery(e) {
     e.preventDefault();
-    console.log(e.currentTarget.elements);
     let newQuery = {
       nutrient: e.currentTarget.elements["nutrient"].value,
       operation: e.currentTarget.elements["operation"].value,
       weight: e.currentTarget.elements["weight"].value,
     };
+    e.currentTarget.elements["nutrient"].value = '';
+    e.currentTarget.elements["operation"].value = 'less than';
+    e.currentTarget.elements["weight"].value = '';
     let queriesCopy = [newQuery];
     for (let i = 0; i < this.state.queries.length; i++) {
       queriesCopy[i + 1] = {
@@ -68,7 +70,8 @@ class App extends React.Component {
     })
   }
 
-  handleSearch() {
+  handleSearch(e) {
+    e.preventDefault();
     //add all the query info into the request
     let urlQuery = '?'
     let queries = this.state.queries;
@@ -79,7 +82,8 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        //parse the data then set state with it.
+
+        //add to remaining data
         this.setState({
           currentFoods: data,
         })
@@ -92,7 +96,7 @@ class App extends React.Component {
     } else if (this.state.sectionSelected === 'Analytics') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Search Foods') {
-      return <Search nutrients={this.state.nutrientData} queries={this.state.queries} addQuery={this.addQuery} clearQueries={this.clearQueries} handleSearch={this.handleSearch}/>
+      return <Search nutrients={this.state.nutrientData} queries={this.state.queries} addQuery={this.addQuery} clearQueries={this.clearQueries} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods}/>
     } else if (this.state.sectionSelected === 'Shipments') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Membership') {
