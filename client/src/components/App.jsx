@@ -18,7 +18,7 @@ class App extends React.Component {
     }
     this.handleNavSelect = this.handleNavSelect.bind(this);
     this.addQuery = this.addQuery.bind(this);
-    this.clearQueries = this.clearQueries.bind(this);
+    this.clearParams = this.clearParams.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -47,24 +47,40 @@ class App extends React.Component {
       operation: e.currentTarget.elements["operation"].value,
       weight: e.currentTarget.elements["weight"].value,
     };
+    let nutrientHash = {};
+    let duplicate = false;
+    for (let i = 0; i < this.state.nutrientData.length; i++) {
+      nutrientHash[this.state.nutrientData[i].nutrient_name] = true;
+    }
+    if (!nutrientHash[newQuery.nutrient]) {
+      //alert of invalid query nutrient name
+      //model?
+      return ;
+    }
+    if (newQuery.weight === '') {
+      //invalid query weight
+      return;
+    }
     e.currentTarget.elements["nutrient"].value = '';
     e.currentTarget.elements["operation"].value = 'less than';
     e.currentTarget.elements["weight"].value = '';
     let queriesCopy = [newQuery];
     for (let i = 0; i < this.state.queries.length; i++) {
+      if (newQuery.nutrient === this.state.queries[i].nutrient &&newQuery.operation === this.state.queries[i].operation && newQuery.weight === this.state.queries[i].weight) {
+        return;
+      }
       queriesCopy[i + 1] = {
         nutrient: this.state.queries[i].nutrient,
         operation: this.state.queries[i].operation,
         weight: this.state.queries[i].weight,
       };
     }
-    //add ability to avoid duplicates
     this.setState({
       queries: queriesCopy
     })
   }
 
-  clearQueries() {
+  clearParams() {
     this.setState({
       queries: []
     })
@@ -96,7 +112,7 @@ class App extends React.Component {
     } else if (this.state.sectionSelected === 'Analytics') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Search Foods') {
-      return <Search nutrients={this.state.nutrientData} queries={this.state.queries} addQuery={this.addQuery} clearQueries={this.clearQueries} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods}/>
+      return <Search nutrients={this.state.nutrientData} queries={this.state.queries} addQuery={this.addQuery} clearParams={this.clearParams} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods}/>
     } else if (this.state.sectionSelected === 'Shipments') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Membership') {
