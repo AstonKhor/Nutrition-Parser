@@ -22,12 +22,17 @@ const AddParams = styled.div`
   border-radius: 10px;
   box-shadow: 2px 2px #f2f0ee;
   background: white;
-  padding: 10px;
+  padding: 30px;
   margin: 25px;
 `;
 
 const Queries = styled.div`
-  
+  border: 0px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px #f2f0ee;
+  background: white;
+  padding: 30px;
+  margin: 25px;
 `;
 
 const SecondRowContainer = styled.div`
@@ -36,7 +41,7 @@ const SecondRowContainer = styled.div`
 `;
 
 const AddParamButton = styled.input`
-
+  
 `;
 
 const ParamForm = styled.form`

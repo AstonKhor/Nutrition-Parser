@@ -5,7 +5,7 @@ const SidebarSection = styled.div`
   border-radius: 7px;
   background-color: #ffeddf;
   margin: 20px 10px 5px 10px;
-  width: 175px;
+  width: 230px;
   height: 55px;
   line-height: 55px;
   text-align: left;

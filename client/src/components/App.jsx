@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       nutrientData: [],
       username: 'Guest',
-      queries: [],
+      queries: [{nutrient: 'nut7asdfasdf1', weight: 'wt2', opteration: 'op1'}],
       currentFoods: [],
       sectionSelected: 'Search Foods',
     }

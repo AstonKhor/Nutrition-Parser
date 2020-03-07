@@ -2,6 +2,7 @@ import { SidebarColumn, Logo } from './Sidebar';
 import { SidebarSection } from './SidebarSection';
 import { Header, Backlay } from './Header';
 import { Search, SearchTitle, AddParams, Queries, SecondRowContainer, AddParamButton, ParamForm, ParamFormInputs } from './Search';
+import { SearchParams } from './SearchParams';
 import { Content } from './Content';
 import { FutureComponentTemplate } from './FutureComponentTemplate';
 
@@ -23,6 +24,8 @@ Wrapper.SecondRowContainer = SecondRowContainer;
 Wrapper.AddParamButton = AddParamButton;
 Wrapper.ParamForm = ParamForm;
 Wrapper.ParamFormInputs = ParamFormInputs;
+
+Wrapper.SearchParams = SearchParams;
 
 Wrapper.Content = Content;
 
