@@ -86,6 +86,12 @@ const ParamFormInputs = styled.span`
   flex-direction: row;
 `;
 
+const CurrentFoodsButtons = styled.span`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 
-export { Search, SearchTitle, AddParams, Queries, CurrentFoods, SearchParams, SearchParamsImage, SecondRowContainer, AddParamButton, ParamForm, ParamFormInputs};
+
+export { Search, SearchTitle, AddParams, Queries, CurrentFoods, SearchParams, SearchParamsImage, SecondRowContainer, AddParamButton, ParamForm, ParamFormInputs, CurrentFoodsButtons};

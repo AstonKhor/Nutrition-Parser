@@ -8,7 +8,7 @@ let SearchParams = ({ params, clearParams, removeParam }) => {
   return (
     <Style.SearchParams>
       <header>Search Parameters</header>
-      <Button onClick={clearParams} style={{background: "#135677", border: "none"}}>Clear All Params</Button>
+      <Button onClick={clearParams} style={{background: "#49b9d3", border: "none"}}>Clear All Params</Button>
       <br/>
       <Col>
         {params.map((query, idx) => (

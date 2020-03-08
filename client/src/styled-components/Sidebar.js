@@ -21,7 +21,6 @@ const Logo = styled.button`
 background: url(./images/sidebar/logo.png) no-repeat;
 background-size: 50px 50px;
 background-position: 25% 25%;
-z-index: 100;
 `
 
 const SidebarSection = styled.button`

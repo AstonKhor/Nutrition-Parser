@@ -34,7 +34,7 @@ let AddParams = ({ nutrients, addParam, handleSearch }) => {
               </Form.Group>
             </Form.Row>
             <Form.Row>
-            <Button style={{background: "#135677", border: "none"}} type="submit">
+            <Button style={{background: "#49b9d3", border: "none"}} type="submit">
               Add Search Parameter
             </Button>
             </Form.Row>

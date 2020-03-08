@@ -54,11 +54,11 @@ class CurrentFoods extends React.Component {
   render() {
     return (
       <Style.CurrentFoods>
-        <span>
-          <Button style={{background: "#135677", border: "none"}} onClick={this.props.handleSearch}>QUERY</Button>
-          <Button onClick>Clear All</Button>
-        </span>
-
+        <Style.CurrentFoodsButtons>
+          <Button style={{background: "#49b9d3", border: "none"}} onClick={this.props.handleSearch}>QUERY</Button>
+          <Button style={{background: 'none', color: 'black', border: "none"}} onClick={this.props.clearFoods}>Clear All</Button>
+        </Style.CurrentFoodsButtons>
+        
         <Table striped bordered hover>
           <thead>
             <tr style={{background: "#ffeddf"}}>

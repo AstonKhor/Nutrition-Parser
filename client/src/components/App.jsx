@@ -21,6 +21,7 @@ class App extends React.Component {
     this.clearParams = this.clearParams.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.removeParam = this.removeParam.bind(this);
+    this.clearFoods = this.clearFoods.bind(this);
   }
 
   componentDidMount() {
@@ -99,6 +100,12 @@ class App extends React.Component {
     })
   }
 
+  clearFoods() {
+    this.setState({
+      currentFoods: []
+    })
+  }
+
   handleSearch(e) {
     e.preventDefault();
     //add all the query info into the request
@@ -125,7 +132,7 @@ class App extends React.Component {
     } else if (this.state.sectionSelected === 'Analytics') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Search Foods') {
-      return <Search nutrients={this.state.nutrientData} params={this.state.params} addParam={this.addParam} clearParams={this.clearParams} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods} removeParam={this.removeParam}/>
+      return <Search nutrients={this.state.nutrientData} params={this.state.params} addParam={this.addParam} clearParams={this.clearParams} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods} removeParam={this.removeParam} clearFoods={this.clearFoods}/>
     } else if (this.state.sectionSelected === 'Shipments') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Membership') {

@@ -6,7 +6,7 @@ const Header = styled.div`
   width: 100%;
   height: 80px;
   z-index: -10;
-  background: #135677;
+  background: #49b9d3;
   padding-left: 275px;
   color: white;
   font-size: 20px;
