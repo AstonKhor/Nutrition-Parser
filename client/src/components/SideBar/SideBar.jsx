@@ -4,9 +4,9 @@ import Style from '../../styled-components/Wrapper';
 
 let SideBar = ({ sections, selected, select }) => (
   <Style.SidebarColumn>
-    <Style.Logo/>
+    <Style.Logo></Style.Logo>
     {sections.map((section, idx) => {
-      return <SideBarSection section={section} selected={selected} select={select} key={idx}></SideBarSection>
+      return <SideBarSection isSelected={section === selected} section={section} select={select} key={idx}></SideBarSection>
     })}
   </Style.SidebarColumn>
 )

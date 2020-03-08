@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Search = styled.div`
-  padding-right: 75px;
   background-color: #f5f5f5;
   color: black;
   font-size: 20px;
@@ -35,8 +34,40 @@ const Queries = styled.div`
   margin: 25px;
 `;
 
-const SecondRowContainer = styled.div`
-  display: flex
+const CurrentFoods = styled.div`
+  width: 800px;
+  border: 0px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px #f2f0ee;
+  background: white;
+  padding: 30px;
+  margin: 25px;
+`;
+
+const SearchParams = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 350px;
+  border: 0px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px #f2f0ee;
+  background: white;
+  padding: 30px;
+  margin: 25px;
+`;
+
+const SearchParamsImage = styled.button`
+  height: 15px;
+  width: 15px;
+  border: none;
+  background: url(./images/search/nutrition.png) no-repeat;
+  background-size: 15px 15px;
+  background-position: 8% 25%;
+`;
+
+const SecondRowContainer = styled.span`
+  display: flex;
   flex-direction: row;
 `;
 
@@ -55,4 +86,6 @@ const ParamFormInputs = styled.span`
   flex-direction: row;
 `;
 
-export { Search, SearchTitle, AddParams, Queries, SecondRowContainer, AddParamButton, ParamForm, ParamFormInputs};
+
+
+export { Search, SearchTitle, AddParams, Queries, CurrentFoods, SearchParams, SearchParamsImage, SecondRowContainer, AddParamButton, ParamForm, ParamFormInputs};

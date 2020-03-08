@@ -12,14 +12,15 @@ class App extends React.Component {
     this.state = {
       nutrientData: [],
       username: 'Guest',
-      queries: [{nutrient: 'nut7asdfasdf1', weight: 'wt2', opteration: 'op1'}],
+      params: [],
       currentFoods: [],
       sectionSelected: 'Search Foods',
     }
     this.handleNavSelect = this.handleNavSelect.bind(this);
-    this.addQuery = this.addQuery.bind(this);
+    this.addParam = this.addParam.bind(this);
     this.clearParams = this.clearParams.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.removeParam = this.removeParam.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +41,7 @@ class App extends React.Component {
     })
   }
 
-  addQuery(e) {
+  addParam(e) {
     e.preventDefault();
     let newQuery = {
       nutrient: e.currentTarget.elements["nutrient"].value,
@@ -64,25 +65,37 @@ class App extends React.Component {
     e.currentTarget.elements["nutrient"].value = '';
     e.currentTarget.elements["operation"].value = 'less than';
     e.currentTarget.elements["weight"].value = '';
-    let queriesCopy = [newQuery];
-    for (let i = 0; i < this.state.queries.length; i++) {
-      if (newQuery.nutrient === this.state.queries[i].nutrient &&newQuery.operation === this.state.queries[i].operation && newQuery.weight === this.state.queries[i].weight) {
+    let paramsCopy = [newQuery];
+    for (let i = 0; i < this.state.params.length; i++) {
+      if (newQuery.nutrient === this.state.params[i].nutrient &&newQuery.operation === this.state.params[i].operation && newQuery.weight === this.state.params[i].weight) {
         return;
       }
-      queriesCopy[i + 1] = {
-        nutrient: this.state.queries[i].nutrient,
-        operation: this.state.queries[i].operation,
-        weight: this.state.queries[i].weight,
+      paramsCopy[i + 1] = {
+        nutrient: this.state.params[i].nutrient,
+        operation: this.state.params[i].operation,
+        weight: this.state.params[i].weight,
       };
     }
     this.setState({
-      queries: queriesCopy
+      params: paramsCopy
+    })
+  }
+
+  removeParam(removeIdx) {
+    let paramsCopy = [];
+    for (let i = 0; i < this.state.params.length; i++) {
+      if (i !== removeIdx) {
+        paramsCopy.push(this.state.params[i]);
+      }
+    }
+    this.setState({
+      params: paramsCopy
     })
   }
 
   clearParams() {
     this.setState({
-      queries: []
+      params: []
     })
   }
 
@@ -90,9 +103,9 @@ class App extends React.Component {
     e.preventDefault();
     //add all the query info into the request
     let urlQuery = '?'
-    let queries = this.state.queries;
-    for (let i = 0; i < queries.length; i++) {
-      urlQuery = urlQuery.concat(`query${i + 1}=${queries[i].nutrient};${queries[i].operation};${queries[i].weight}&`);
+    let params = this.state.params;
+    for (let i = 0; i < params.length; i++) {
+      urlQuery = urlQuery.concat(`query${i + 1}=${params[i].nutrient};${params[i].operation};${params[i].weight}&`);
     }
     fetch(`/foods/search${urlQuery.slice(0, urlQuery.length - 1)}`)
       .then((response) => response.json())
@@ -112,7 +125,7 @@ class App extends React.Component {
     } else if (this.state.sectionSelected === 'Analytics') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Search Foods') {
-      return <Search nutrients={this.state.nutrientData} queries={this.state.queries} addQuery={this.addQuery} clearParams={this.clearParams} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods}/>
+      return <Search nutrients={this.state.nutrientData} params={this.state.params} addParam={this.addParam} clearParams={this.clearParams} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods} removeParam={this.removeParam}/>
     } else if (this.state.sectionSelected === 'Shipments') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Membership') {

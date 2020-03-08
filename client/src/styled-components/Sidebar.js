@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SidebarColumn = styled.button`
+const SidebarColumn = styled.div`
   position: fixed;
   border: none;
   left: 0px;
@@ -17,10 +17,36 @@ const SidebarColumn = styled.button`
   outline: none;
 `
 
-const Logo = styled.div`
+const Logo = styled.button`
 background: url(./images/sidebar/logo.png) no-repeat;
 background-size: 50px 50px;
 background-position: 25% 25%;
+z-index: 100;
 `
 
-export { SidebarColumn, Logo };
+const SidebarSection = styled.button`
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+  border: none;
+  border-radius: 7px;
+  margin: 20px 10px 5px 10px;
+  width: 230px;
+  height: 55px;
+  line-height: 55px;
+  text-align: left;
+  padding-left: 55px;
+  color: #135677;
+  font-weight: bold;
+  background: url(./images/sidebar/${props => props.section.toLowerCase().replace(' ', '')}.png) no-repeat;
+  background-size: 20px 20px;
+  background-position: 8% center;
+  background-color: ${props => props.isSelected ? '#fefbf8' : '#ffeddf'};
+  font-size: 20px;
+  &:hover {
+    background-color: #fefbf8;
+  }
+  &:focus {
+    outline: none;
+  }
+`
+
+export { SidebarColumn, Logo, SidebarSection };
