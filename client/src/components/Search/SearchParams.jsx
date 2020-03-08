@@ -1,31 +1,42 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
-import Toast from 'react-bootstrap/Toast';
 import Style from '../../styled-components/Wrapper';
-import Button from 'react-bootstrap/Button';
+import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
 
 let SearchParams = ({ params, clearParams, removeParam }) => {
+  const convertOperation = (operation) => {
+    if (operation === 'less than') { return '<'; }
+    if (operation === 'equal to') { return '='; }
+    if (operation === 'greater than') { return '>'; }
+  }
+  //convertOperation(query.operation)
+  const addUnits = (nutrient) => {
+    if (nutrient === 'Energy') {
+      return 'Calories';
+    } else {
+      return 'grams';
+    }
+  }
+
+
   return (
     <Style.SearchParams>
       <header>Search Parameters</header>
-      <Button onClick={clearParams} style={{background: "#49b9d3", border: "none"}}>Clear All Params</Button>
-      <br/>
-      <Col>
+      <Button onClick={clearParams} style={{background: "#49b9d3", border: "none", color: 'white', margin: '15px'}}>
+        Clear All Params
+      </Button>
+      <div>
         {params.map((query, idx) => (
-          <span key={idx} >
-            <Toast animation onClose={() => { removeParam(idx) }}>
-              <Toast.Header style={{display: 'flex', 'flexDirection': 'row', 'alignItems': 'center', 'background': '#ffeddf', "fontSize": '20'}}>
-                <Style.SearchParamsImage/>
-                &ensp;
-                <strong className="mr-auto">{query.nutrient}</strong>
-                &emsp;
-              </Toast.Header>
-              <Toast.Body>{query.operation}  {query.weight}</Toast.Body>
-            </Toast>
-            <br/>
-          </span>
+          <div key={idx} >
+            <Chip 
+              onDelete={() => { removeParam(idx) }} 
+              avatar={<Style.SearchParamsImage/>} 
+              label={`${query.nutrient.split(',')[0]} ${query.operation} ${query.weight} ${addUnits(query.nutrient)}`}
+              style={{background: '#ffeddf', margin: '5px'}}
+              />
+          </div>
         ))}
-      </Col>
+      </div>
     </Style.SearchParams>
   )
 }

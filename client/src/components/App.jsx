@@ -15,6 +15,7 @@ class App extends React.Component {
       params: [],
       currentFoods: [],
       sectionSelected: 'Search Foods',
+      clearPrevSearch: true,
     }
     this.handleNavSelect = this.handleNavSelect.bind(this);
     this.addParam = this.addParam.bind(this);
@@ -22,6 +23,7 @@ class App extends React.Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.removeParam = this.removeParam.bind(this);
     this.clearFoods = this.clearFoods.bind(this);
+    this.handleAddSwitch = this.handleAddSwitch.bind(this);
   }
 
   componentDidMount() {
@@ -119,11 +121,32 @@ class App extends React.Component {
       .then((data) => {
         console.log(data);
 
+        //grab specific data on each? or should this be done in the table?
+
         //add to remaining data
-        this.setState({
-          currentFoods: data,
-        })
+        if (this.state.clearPrevSearch) {
+          this.setState({
+            currentFoods: data,
+          })
+        } else {
+          let currentFoodsCopy = [];
+          for (let i = 0; i < this.state.currentFoods.length; i++) {
+            currentFoodsCopy.push(Object.assign({}, this.state.currentFoods[i]));
+          }
+          for (let i = 0; i < data.length; i++) {
+            currentFoodsCopy.push(data[i]);
+          }
+          this.setState({
+            currentFoods: currentFoodsCopy
+          })
+        }
       })
+  }
+
+  handleAddSwitch() {
+    this.setState({
+      clearPrevSearch: !this.state.clearPrevSearch,
+    })
   }
 
   renderSelection() {
@@ -132,7 +155,7 @@ class App extends React.Component {
     } else if (this.state.sectionSelected === 'Analytics') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Search Foods') {
-      return <Search nutrients={this.state.nutrientData} params={this.state.params} addParam={this.addParam} clearParams={this.clearParams} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods} removeParam={this.removeParam} clearFoods={this.clearFoods}/>
+      return <Search nutrients={this.state.nutrientData} params={this.state.params} addParam={this.addParam} clearParams={this.clearParams} handleSearch={this.handleSearch} currentFoods={this.state.currentFoods} removeParam={this.removeParam} clearFoods={this.clearFoods} handleAddSwitch={this.handleAddSwitch} clearPrevSearch={this.state.clearPrevSearch}/>
     } else if (this.state.sectionSelected === 'Shipments') {
       return <FutureComponentTemplate/>
     } else if (this.state.sectionSelected === 'Membership') {

@@ -63,7 +63,7 @@ const SearchParamsImage = styled.button`
   border: none;
   background: url(./images/search/nutrition.png) no-repeat;
   background-size: 15px 15px;
-  background-position: 8% 25%;
+  background-position: center;
 `;
 
 const SecondRowContainer = styled.span`
