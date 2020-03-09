@@ -29,4 +29,4 @@ In a different Terminal shell, run
 npm start #Run express server and open port 3000
 ```
 
-Open browser to localhost:3001
+Open browser to localhost:3000
