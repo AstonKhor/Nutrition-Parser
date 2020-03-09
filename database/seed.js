@@ -1,8 +1,10 @@
 const data = require('./food_data.json');
 const { db } = require('./index');
 let queries = [];
+const startTime = Date.now();
 
 let parseData = (data) => {
+  console.log('Beginning Seeding')
   let foods = data.report.foods;
   
   for (let i = 0; i < foods.length; i++) {
@@ -40,6 +42,7 @@ let parseData = (data) => {
 parseData(data);
 Promise.all(queries)
   .then(() => {
-    console.log('ending all');
+    console.log(`Completed Seeding in: ${(Date.now() - startTime)/1000}s`);
+    console.log('Ending Connection to Database');
     db.end();
   })

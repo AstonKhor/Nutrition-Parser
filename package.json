@@ -7,7 +7,7 @@
     "build": "webpack -w -d",
     "seed": "node database/seed.js",
     "start": "nodemon server/server.js",
-    "db:populate": "mysql -u root -p"
+    "db:populate": "mysql -u root < database/schema.sql"
   },
   "keywords": [],
   "author": "Aston Khor <khoraston@gmail.com> (NA)",
