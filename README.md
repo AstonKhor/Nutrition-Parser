@@ -17,6 +17,7 @@ npm install #Install relevant packages
 npm run db:populate #Create databases and tables
 npm run seed #Seed database with json file data
 ``` 
+***You may have to adjust the password in /database/seed.js to match your local environment
 
 In a different Terminal shell , run 
 ```
