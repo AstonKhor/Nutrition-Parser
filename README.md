@@ -2,11 +2,30 @@
 
 Before running be sure that you have the following installed 
 
-Node (lts/carbon)
-mysql (@5.7)
+- nvm
+- node lts/carbon
+- mysql@5.7
 
-startup npm install
 
+## How to start application:
 
-Mysql
-mysql -u root -p < database/schema.sql
+Navigate to the Nutrition Parser Directory "/Nutrition-Parser"
+
+In Terminal shell, run the following sequentially
+```
+npm install #Install relevant packages 
+npm run db:populate #Create databases and tables
+npm run seed #Seed database with json file data
+``` 
+
+In a different Terminal shell , run 
+```
+npm run build #compile bundle with webpack and babel
+```
+
+In a different Terminal shell, run 
+```
+npm start #Run express server and open port 3000
+```
+
+Open browser to localhost:3001
