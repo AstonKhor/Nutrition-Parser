@@ -5,7 +5,7 @@ const Header = styled.div`
   top: 0px;
   width: 100%;
   height: 80px;
-  z-index: 5000;
+  z-index: -10;
   background: #49b9d3;
   padding-left: 275px;
   color: white;
@@ -20,12 +20,12 @@ const Header = styled.div`
 `
 
 const HeaderLeft = styled.span`
-  padding: 13px 0px 0px 15px;
+  padding: 17px 0px 0px 15px;
   font-size: 30px;
 `
 
 const HeaderRight = styled.span`
-  padding: 0px 10px;
+  padding: 10px 10px;
   font-size: 25px;
   disply: flex;
   flex-direction: row;
