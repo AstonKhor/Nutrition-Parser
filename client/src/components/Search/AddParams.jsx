@@ -24,7 +24,7 @@ let AddParams = ({ nutrients, addParam, handleSearch }) => {
         </div>
         <br/>
         <div>
-          <Button style={{ background: "#49b9d3", border: "none", color: 'white' }} type="submit">
+          <Button style={{ background: '#49b9d3', border: 'none', color: 'white', marginLeft: '175px'}} type="submit">
             Add Search Parameter
           </Button>
         </div>

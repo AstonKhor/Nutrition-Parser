@@ -18,9 +18,14 @@ const SidebarColumn = styled.div`
 `
 
 const Logo = styled.button`
-background: url(./images/sidebar/logo.png) no-repeat;
-background-size: 50px 50px;
-background-position: 25% 25%;
+  border: none;
+  border-radius: 7px;
+  margin: 20px 10px 0px 10px;
+  height: 60px;
+  width: 230px;
+  background: url(./images/sidebar/logo.png) no-repeat;
+  background-size: 200px 120px;
+  background-position: center center;
 `
 
 const SidebarSection = styled.button`

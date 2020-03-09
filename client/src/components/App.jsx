@@ -171,7 +171,7 @@ class App extends React.Component {
     return (
       <div>
         <SideBar sections={this.sections} selected={this.state.sectionSelected} select={this.handleNavSelect}/>
-        <Header/>
+        <Header section={this.state.sectionSelected}/>
         {/* <Style.Backlay/> */}
         <Style.Content>
           {/* {<top bar>} */}

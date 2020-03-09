@@ -40,13 +40,13 @@ class CurrentFoods extends React.Component {
           <Button style={{background: "#49b9d3", border: "none", color: 'white'}} onClick={this.props.handleSearch}>Add Food</Button>
           <FormControlLabel
             control={
-              <Switch checked={this.props.clearPrevSearch} onChange={this.props.handleAddSwitch} value="clearPrevSearch" color='primary'/>
+              <Switch style={{color: "#49b9d3"}}checked={this.props.clearPrevSearch} onChange={this.props.handleAddSwitch} value="clearPrevSearch" color='primary'/>
             }
             label="Clear on Search"
           />
           <Button style={{background: 'none', color: 'black', border: "none"}} onClick={this.props.clearFoods}>Clear All</Button>
         </Style.CurrentFoodsButtons>
-        <TableContainer component={Paper}>
+        <TableContainer style={{ marginTop: '10px'}} component={Paper}>
           <Table>
             <TableHead>
               <TableRow style={{background: '#ffeddf'}}>

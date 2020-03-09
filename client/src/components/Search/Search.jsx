@@ -8,7 +8,6 @@ let Search = ({ nutrients, params, addParam, clearParams, handleSearch, currentF
   //reset the values in 
   return (
       <Style.Search>
-        <Style.SearchTitle>Personalize Your Diet</Style.SearchTitle>
         <AddParams nutrients={nutrients} addParam={addParam}/>
         <Style.SecondRowContainer>
           <CurrentFoods currentFoods={currentFoods} handleSearch={handleSearch} clearFoods={clearFoods} handleAddSwitch={handleAddSwitch} clearPrevSearch={clearPrevSearch}/>

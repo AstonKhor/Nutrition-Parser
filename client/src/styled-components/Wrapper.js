@@ -1,5 +1,5 @@
 import { SidebarColumn, Logo, SidebarSection } from './Sidebar';
-import { Header, Backlay } from './Header';
+import { Header, HeaderLeft, HeaderRight } from './Header';
 import { Search, SearchTitle, AddParams, Queries, CurrentFoods, SearchParams, SearchParamsImage, SecondRowContainer, AddParamButton, ParamForm, ParamFormInputs, CurrentFoodsButtons} from './Search';
 import { Content } from './Content';
 import { FutureComponentTemplate } from './FutureComponentTemplate';
@@ -12,7 +12,9 @@ Wrapper.Logo = Logo;
 Wrapper.SidebarSection = SidebarSection;
 
 Wrapper.Header = Header;
-Wrapper.Backlay = Backlay;
+Wrapper.HeaderLeft = HeaderLeft;
+Wrapper.HeaderLeft = HeaderLeft;
+Wrapper.HeaderRight = HeaderRight;
 
 Wrapper.Search = Search;
 Wrapper.SearchTitle = SearchTitle;

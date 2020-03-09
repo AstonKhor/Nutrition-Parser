@@ -13,18 +13,26 @@ const Header = styled.div`
   font-family: 'Open Sans', sans-serif;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   outline: none;
   border: none;
   border-shadow: 0px 5px;
 `
 
-const Backlay = styled.div`
-  position: fixed;
-  top: 80px;
-  left: 265px;
-  background: #135677;
-  height: 400px;
-  z-index: 0;
+const HeaderLeft = styled.span`
+  padding: 17px 0px 0px 15px;
+  font-size: 30px;
 `
 
-export { Header, Backlay };
+const HeaderRight = styled.span`
+  padding: 10px 10px;
+  font-size: 25px;
+  disply: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  &:focus {
+    outline: none;
+  }
+`
+
+export { Header, HeaderLeft, HeaderRight };

@@ -35,7 +35,7 @@ const Queries = styled.div`
 `;
 
 const CurrentFoods = styled.div`
-  width: 800px;
+  width: 600px;
   border: 0px solid black;
   border-radius: 10px;
   box-shadow: 2px 2px #f2f0ee;
